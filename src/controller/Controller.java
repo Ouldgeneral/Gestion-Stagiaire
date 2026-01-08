@@ -6,11 +6,14 @@ import java.awt.event.ItemEvent;
 import java.io.File;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.AbstractButton;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -140,6 +143,7 @@ public class Controller{
                 message("Ce matricule appartient deja a un stagiaire veuillez corriger l'erreur ou mettre a jour les matricule", "Redondance de matricule");
                 return ;
             }
+            view.getListeStagiaire().setModel(liste);
             liste.addElement(stagiaire);
             model.ajouterStagiaire(stagiaire);
             if(photo!=null)model.enregistrerImage(photo,stagiaire.getMatricule());
@@ -229,9 +233,16 @@ public class Controller{
             view.actualiserQr();
         });
         view.getBtnSupprimerStagiaire().addActionListener(e->{
-            model.supprimerStagiaire(((Stagiaire)view.getListeStagiaire().getSelectedValue()).getMatricule());
-            liste.removeElement(view.getListeStagiaire().getSelectedValue());
-            view.getBtnSupprimerStagiaire().setEnabled(false);
+            if(view.getListeStagiaire().getSelectedValue()!=null){
+                int reponse=JOptionPane.showConfirmDialog(view, new JLabel("Voulez vous vraiment supprimer ce stagiaire.Cette operation est irreversible"),"Suppression de Stagiaire",JOptionPane.OK_CANCEL_OPTION);
+                if(reponse==JOptionPane.OK_OPTION){
+                    model.supprimerStagiaire(((Stagiaire)view.getListeStagiaire().getSelectedValue()).getMatricule());
+                    liste.removeElement(view.getListeStagiaire().getSelectedValue());
+                    view.getBtnSupprimerStagiaire().setEnabled(false);
+                }
+            }else{
+                message("Veuillez Selectionnez un stagiaire d'abord","Erreur de suppression");
+            }
         });
         view.getBtnImprimDoc().addActionListener(e->{
             if(view.getBtnEnregistrer().isEnabled()){
@@ -266,6 +277,13 @@ public class Controller{
             message("Age non accepter il faut etre entre 15 et 35 ans pour pouvoir s'inscrire", "Erreur d'Age");
             return null;
         }
+        Pattern p=Pattern.compile("[^a-zA-Z0-9]");
+        Matcher m=p.matcher(view.getMatricule().getText());
+        if(m.find()){
+            message("Le Matricule ne doit contenir que des caracteres alphanumerique de A a Z et 0 a 9","Matricule erronne");
+            return null;
+        }
+        System.out.println("");
         int numeroTel=0;
         if(!view.getTelephone().getText().isEmpty()){
             try{
