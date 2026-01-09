@@ -1,5 +1,6 @@
 package model;
 
+import View.View;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.io.File;
@@ -7,10 +8,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
 import outils.GestionStageBD;
+import outils.I18n;
 import outils.ImagePanel;
 import outils.Imprimerie;
 
@@ -28,6 +31,12 @@ public class Model {
         emplacementBaseApplicationImage=System.getenv("APPDATA")+"\\GestonnaireDeStage\\images\\";
         baseDonnee=new GestionStageBD(emplacementBaseApplication);
     }
+    public void changerLangue(Locale langue,View view){
+        if(view.getLocale().getLanguage().equalsIgnoreCase(langue.getLanguage()))return;
+        I18n.changerLangue(langue);
+        view.setLocale(langue);
+        view.appliquerLangue();
+    }
     public void ajouterStagiaire(Stagiaire stagiaire){
         baseDonnee.ajouterStagiaires(stagiaire);
     }
@@ -39,8 +48,8 @@ public class Model {
     }
     public DefaultListModel<Stagiaire> chargerListe(DefaultComboBoxModel listeSemestre,DefaultComboBoxModel listeSpecialite){
         DefaultListModel<Stagiaire> liste=baseDonnee.chargerListe();
-        listeSemestre.addElement("Tout");
-        listeSpecialite.addElement("Tout");
+        listeSemestre.addElement(I18n.texte("combo.text"));
+        listeSpecialite.addElement(I18n.texte("combo.text"));
         for(int i=0;i<liste.size();i++){
             String specialite=liste.getElementAt(i).getSpecialite();
             int semestre=liste.getElementAt(i).getSemestre();

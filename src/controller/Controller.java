@@ -6,6 +6,7 @@ import java.awt.event.ItemEvent;
 import java.io.File;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.AbstractButton;
@@ -21,6 +22,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import model.Model;
 import model.Stagiaire;
 import org.jdesktop.swingx.JXDialog;
+import outils.I18n;
 import outils.ImagePanel;
 /**
  * @author Ould_Hamdi
@@ -32,8 +34,8 @@ public class Controller{
     DefaultListModel<Stagiaire> liste;
     DefaultComboBoxModel<String> listeSpecialite;
     DefaultComboBoxModel<String> listeSemestre;
-    String semestre="Tout";
-    String specialite="Tout";
+    String semestre=I18n.texte("combo.text");
+    String specialite=I18n.texte("combo.text");
     public Controller(View view,Model model){
         this.view=view;
         this.model=model;
@@ -69,21 +71,21 @@ public class Controller{
     }
     private void filtrer(){
         DefaultListModel<Stagiaire> listeFiltrer=new DefaultListModel<>();
-        if(!semestre.equals("Tout") && specialite.equals("Tout")){
+        if(!semestre.equals(I18n.texte("combo.text")) && specialite.equals(I18n.texte("combo.text"))){
             for(int i=0;i<liste.size();i++){
                 if((liste.getElementAt(i).getSemestre()+"").equals(semestre)){
                     listeFiltrer.addElement(liste.getElementAt(i));
                 }
             }
         }
-        else if(semestre.equals("Tout") && !specialite.equals("Tout")){
+        else if(semestre.equals(I18n.texte("combo.text")) && !specialite.equals(I18n.texte("combo.text"))){
             for(int i=0;i<liste.size();i++){
                 if((liste.getElementAt(i).getSpecialite()).equalsIgnoreCase(specialite)){
                     listeFiltrer.addElement(liste.getElementAt(i));
                 }
             }
         }
-        else if(!semestre.equals("Tout") && !specialite.equals("Tout")){
+        else if(!semestre.equals(I18n.texte("combo.text")) && !specialite.equals(I18n.texte("combo.text"))){
             for(int i=0;i<liste.size();i++){
                 if((liste.getElementAt(i).getSpecialite()).equalsIgnoreCase(specialite) &&
                    (liste.getElementAt(i).getSemestre()+"").equalsIgnoreCase(semestre)     
@@ -140,7 +142,7 @@ public class Controller{
         Stagiaire stagiaire=validerSyntaxe();
         if(stagiaire!=null){
             if(matriculeValide(stagiaire.getMatricule())!=-1){
-                message("Ce matricule appartient deja a un stagiaire veuillez corriger l'erreur ou mettre a jour les matricule", "Redondance de matricule");
+                message(I18n.texte("message.mat2"), I18n.texte("message.mat2.titre"));
                 return ;
             }
             view.getListeStagiaire().setModel(liste);
@@ -154,7 +156,7 @@ public class Controller{
     public void mettreAJour(){
         Stagiaire stagiaire=(Stagiaire)view.getListeStagiaire().getSelectedValue();
         if(stagiaire==null){
-            message("Veuillez selectionnez le stagiaire a modifier d'abord", "Aucun stagiaire precise");
+            message(I18n.texte("message.sel"), I18n.texte("message.sel.titre"));
             return;
         }
         String ancienMatricule=stagiaire.getMatricule();
@@ -183,7 +185,7 @@ public class Controller{
                     model.enregistrerImage(photo, stagiaire.getMatricule());
                 }
                 model.mettreAJourStagiaire(stagiaire, ancienMatricule);
-                message("Donne mise a jour", "Modification reussi");
+                message( I18n.texte("message.MAJ"), I18n.texte("message.MAJ.titre"));
             }
         }
     }
@@ -234,35 +236,57 @@ public class Controller{
         });
         view.getBtnSupprimerStagiaire().addActionListener(e->{
             if(view.getListeStagiaire().getSelectedValue()!=null){
-                int reponse=JOptionPane.showConfirmDialog(view, new JLabel("Voulez vous vraiment supprimer ce stagiaire.Cette operation est irreversible"),"Suppression de Stagiaire",JOptionPane.OK_CANCEL_OPTION);
+                int reponse=JOptionPane.showConfirmDialog(view, new JLabel(I18n.texte("option.sup")),I18n.texte("option.sup.titre"),JOptionPane.OK_CANCEL_OPTION);
                 if(reponse==JOptionPane.OK_OPTION){
-                    model.supprimerStagiaire(((Stagiaire)view.getListeStagiaire().getSelectedValue()).getMatricule());
-                    liste.removeElement(view.getListeStagiaire().getSelectedValue());
+                    Object[] stagiaireSelectionne=view.getListeStagiaire().getSelectedValues();
+                    for(Object o:stagiaireSelectionne){
+                        Stagiaire stagiaire=(Stagiaire)o;
+                        model.supprimerStagiaire(stagiaire.getMatricule());
+                        liste.removeElement(o);
+                    }
                     view.getBtnSupprimerStagiaire().setEnabled(false);
                 }
             }else{
-                message("Veuillez Selectionnez un stagiaire d'abord","Erreur de suppression");
+                message(I18n.texte("message.sup"),I18n.texte("message.sup.titre"));
             }
         });
         view.getBtnImprimDoc().addActionListener(e->{
-            if(view.getBtnEnregistrer().isEnabled()){
-                view.getBtnSupprimer().setVisible(false);
-                view.getBtnChanger().setVisible(false);
-                view.getBtnVider().setVisible(false);
-                view.getBtnMAJ().setVisible(false);
-                view.getBtnEnregistrer().setVisible(false);
-                model.imprimerDocument(view.getDocument(), view.getMatricule().getText());
+            if(view.getListeStagiaire().getSelectedValue()!=null){
+                Object[] stagiaireSelectionne=view.getListeStagiaire().getSelectedValues();
+                for(Object o:stagiaireSelectionne){
+                    Stagiaire stagiaire=(Stagiaire)o;
+                    infoStagiaire(stagiaire);
+                    view.getBtnSupprimer().setVisible(false);
+                    view.getBtnChanger().setVisible(false);
+                    view.getBtnVider().setVisible(false);
+                    view.getBtnMAJ().setVisible(false);
+                    view.getBtnEnregistrer().setVisible(false);
+                    model.imprimerDocument(view.getDocument(), view.getMatricule().getText());
+                }
                 view.getBtnSupprimer().setVisible(true);
                 view.getBtnChanger().setVisible(true);
                 view.getBtnVider().setVisible(true);
                 view.getBtnMAJ().setVisible(true);
                 view.getBtnEnregistrer().setVisible(true);
-                message("Document imprime avec succes", "Impression");
-            }else{
-                message("Veuillez remplir le document d'abord", "Document non empli");
+                message(I18n.texte("message.imp"),I18n.texte("message.imp.titre"));
+            }
+            else{
+                message(I18n.texte("message.rmp"),I18n.texte("message.rmp.titre"));
             }
         });
+        view.getaPropos().addActionListener(e->{
+            message(I18n.texte("message.apr"),I18n.texte("message.apr.titre"));
+        });
+        view.getQuitter().addActionListener(e->view.dispose());
+        view.getArabe().addActionListener(e->{
+            model.changerLangue(new Locale("ar","DZ"), view);
+            //view.applyComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        });
+        view.getFrancais().addActionListener(e->{
+            model.changerLangue(Locale.FRENCH, view);
+        });
     }
+    
     private void message(String message,String titre){
         JXDialog dialog=new JXDialog(new JLabel(message));
         dialog.setTitle(titre);
@@ -274,13 +298,13 @@ public class Controller{
     private Stagiaire validerSyntaxe(){
         Date d=view.getDateNaissance().getDate();
         if((new Date().getYear())-d.getYear()<15 || (new Date().getYear())-d.getYear()>35){
-            message("Age non accepter il faut etre entre 15 et 35 ans pour pouvoir s'inscrire", "Erreur d'Age");
+            message(I18n.texte("message.age"), I18n.texte("message.age.titre"));
             return null;
         }
         Pattern p=Pattern.compile("[^a-zA-Z0-9]");
         Matcher m=p.matcher(view.getMatricule().getText());
         if(m.find()){
-            message("Le Matricule ne doit contenir que des caracteres alphanumerique de A a Z et 0 a 9","Matricule erronne");
+            message(I18n.texte("message.mat"),I18n.texte("message.mat.titre"));
             return null;
         }
         System.out.println("");
@@ -290,7 +314,7 @@ public class Controller{
                 numeroTel=Integer.parseInt(view.getTelephone().getText());
                 if(numeroTel<0)throw new NumberFormatException();
             }catch(NumberFormatException ex){
-                message("Numero telephone invalide le numero doit etre un nombre entier superieur a 0","Numero telephone erronne");
+                message(I18n.texte("message.num"),I18n.texte("message.num.titre"));
                 return null;
             }
         }
@@ -299,14 +323,14 @@ public class Controller{
             semestreStagiaire=Integer.parseInt(view.getSemestre().getText());
             if(semestreStagiaire<=0)throw  new NumberFormatException();
         }catch(NumberFormatException ex){
-            message("Le semestre doit etre un nombre entier superieur a 0", "Semestre erronne");
+            message(I18n.texte("message.sem"), I18n.texte("message.sem.titre"));
             return null;
         }
         int groupe;
         try{
             groupe=Integer.parseInt(view.getGroupe().getText());
         }catch(NumberFormatException ex){
-            message("Numero Groupe Invalide le numero de groue est un entier superieur a 0", "Numero de Groupe erronne");
+            message(I18n.texte("message.groupe"), I18n.texte("message.groupe.titre"));
             return null;
         }
         String nom=view.getNom().getText();
@@ -345,14 +369,14 @@ public class Controller{
             }
             for(Enumeration<AbstractButton> e=view.getGenre().getElements();e.hasMoreElements();){
                 AbstractButton b=e.nextElement();
-                if(b.getText().equalsIgnoreCase(stagiaire.getGenre())){
+                if(b.getActionCommand().equalsIgnoreCase(stagiaire.getGenre())){
                     b.setSelected(true);
                     break;
                 }
             }
             for(Enumeration<AbstractButton> e=view.getModeStage().getElements();e.hasMoreElements();){
                 AbstractButton b=e.nextElement();
-                if(b.getText().equalsIgnoreCase(stagiaire.getModeApprentissage())){
+                if(b.getActionCommand().equalsIgnoreCase(stagiaire.getModeApprentissage())){
                     b.setSelected(true);
                     break;
                 }
