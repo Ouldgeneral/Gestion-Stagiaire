@@ -123,6 +123,9 @@ public class View extends javax.swing.JFrame {
         lSpecialite = new javax.swing.JLabel();
         listeSpecialite = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
+        fichier = new javax.swing.JMenu();
+        tabExcel = new javax.swing.JMenuItem();
+        ficExcel = new javax.swing.JMenuItem();
         langue = new javax.swing.JMenu();
         francais = new javax.swing.JMenuItem();
         arabe = new javax.swing.JMenuItem();
@@ -133,6 +136,7 @@ public class View extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gesta");
+        setResizable(false);
 
         gesta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -432,6 +436,16 @@ public class View extends javax.swing.JFrame {
 
         gesta.add(espaceSpecialite2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 160, 30));
 
+        fichier.setText("Fichier");
+
+        tabExcel.setText("Exporter la liste en tableau Excel");
+        fichier.add(tabExcel);
+
+        ficExcel.setText("Importer une liste Excel");
+        fichier.add(ficExcel);
+
+        jMenuBar1.add(fichier);
+
         langue.setText("Langue");
         langue.setToolTipText("");
 
@@ -559,6 +573,8 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JPanel espaceSpecialite2;
     private javax.swing.JPanel espaceTelephone;
     private javax.swing.JRadioButton femme;
+    private javax.swing.JMenuItem ficExcel;
+    private javax.swing.JMenu fichier;
     private javax.swing.JMenuItem francais;
     private javax.swing.ButtonGroup genre;
     private javax.swing.JPanel gesta;
@@ -603,6 +619,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JRadioButton residentiel;
     private org.jdesktop.swingx.JXTextField semestre;
     private org.jdesktop.swingx.JXTextField specialite;
+    private javax.swing.JMenuItem tabExcel;
     // End of variables declaration//GEN-END:variables
 
     public JXTextField getAdresse() {
@@ -844,6 +861,15 @@ public class View extends javax.swing.JFrame {
     public JMenuItem getFrancais() {
         return francais;
     }
+
+    public JMenuItem getTabExcel() {
+        return tabExcel;
+    }
+
+    public JMenuItem getFicExcel() {
+        return ficExcel;
+    }
+    
     public void appliquerLangue(){
         lSemestre1.setText(I18n.texte("label.semestre"));
         lSemestre2.setText(I18n.texte("label.semestre"));
@@ -875,6 +901,9 @@ public class View extends javax.swing.JFrame {
         lInfoP.setText(I18n.texte("label.infoP"));
         lInfoS.setText(I18n.texte("label.infoS"));
         lFiltre.setText(I18n.texte("label.filtre"));
+        fichier.setText(I18n.texte("menu.fichier"));
+        tabExcel.setText(I18n.texte("menu.fichier.excel"));
+        ficExcel.setText(I18n.texte("menu.fichier.csv"));
         aide.setText(I18n.texte("menu.aide"));
         langue.setText(I18n.texte("menu.langue"));
         aPropos.setText(I18n.texte("menu.aide.apr"));
@@ -893,6 +922,7 @@ public class View extends javax.swing.JFrame {
         rechercher.setToolTipText(I18n.texte("tooltip.rec"));
         codeQr.setToolTipText(I18n.texte("tooltip.codeQr"));
         listeStagiaire.setToolTipText(I18n.texte("tooltip.liste"));
+        
         echangerPlace(espaceNom);
         echangerPlace(espacePrenom);
         echangerPlace(espaceDateLieuNaissance);

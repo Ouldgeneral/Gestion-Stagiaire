@@ -51,6 +51,7 @@ public class Controller{
     }
     public void demarrer(){
         view.ajouterDocumentListener();
+        model.chargerLangue(view);
         view.setVisible(true);
     }
     private void initialiserFiltrage(){
@@ -198,9 +199,9 @@ public class Controller{
         });
         view.getBtnChanger().addActionListener(e->{
             JFileChooser ouvrirImage=new JFileChooser();
-            ouvrirImage.setDialogTitle("Choisissez une photo du Stagiaire");
-            ouvrirImage.setFileFilter(new FileNameExtensionFilter("Image", "png","jpg","jpeg"));
-            ouvrirImage.showDialog(view, "Ouvrir");
+            ouvrirImage.setDialogTitle(I18n.texte("filechooser.titre"));
+            ouvrirImage.setFileFilter(new FileNameExtensionFilter(I18n.texte("filechooser.type"), "png","jpg","jpeg"));
+            ouvrirImage.showDialog(view, I18n.texte("filechooser.open"));
             photo=ouvrirImage.getSelectedFile();
             if(photo==null)return;
             JPanel image=new ImagePanel(ouvrirImage.getSelectedFile().getAbsolutePath());
@@ -280,10 +281,29 @@ public class Controller{
         view.getQuitter().addActionListener(e->view.dispose());
         view.getArabe().addActionListener(e->{
             model.changerLangue(new Locale("ar","DZ"), view);
-            //view.applyComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         });
         view.getFrancais().addActionListener(e->{
             model.changerLangue(Locale.FRENCH, view);
+        });
+        view.getTabExcel().addActionListener(e->{
+            JFileChooser sauverFichier=new JFileChooser();
+            sauverFichier.setDialogTitle(I18n.texte("fileSaver.titre"));
+            int selection=sauverFichier.showSaveDialog(view);
+            if(selection==JFileChooser.APPROVE_OPTION){
+                model.exporterExcel(liste,sauverFichier.getSelectedFile().getAbsolutePath()+".csv");
+                message(I18n.texte("message.save"),"Excelُ");
+            }
+        });
+        view.getFicExcel().addActionListener(e->{
+            JFileChooser ouvrirFichier=new JFileChooser();
+            ouvrirFichier.setDialogTitle(I18n.texte("filechooser.titre2"));
+            ouvrirFichier.setFileFilter(new FileNameExtensionFilter(I18n.texte("filechooser.type2"), "csv"));
+            ouvrirFichier.showDialog(view, I18n.texte("filechooser.open"));
+            File fichier=ouvrirFichier.getSelectedFile();
+            if(fichier!=null){
+                model.importerExcel(liste, fichier);
+                message(I18n.texte("message.add"),"Excelُ");
+            }
         });
     }
     
@@ -307,7 +327,6 @@ public class Controller{
             message(I18n.texte("message.mat"),I18n.texte("message.mat.titre"));
             return null;
         }
-        System.out.println("");
         int numeroTel=0;
         if(!view.getTelephone().getText().isEmpty()){
             try{
