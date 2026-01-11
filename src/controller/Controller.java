@@ -4,6 +4,9 @@ import View.View;
 import java.awt.BorderLayout;
 import java.awt.event.ItemEvent;
 import java.io.File;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Locale;
@@ -24,6 +27,7 @@ import model.Stagiaire;
 import org.jdesktop.swingx.JXDialog;
 import outils.I18n;
 import outils.ImagePanel;
+import outils.ProgressionSuppression;
 /**
  * @author Ould_Hamdi
  */
@@ -163,21 +167,10 @@ public class Controller{
         String ancienMatricule=stagiaire.getMatricule();
         stagiaire=validerSyntaxe();
         if(stagiaire!=null){
-            int index=matriculeValide(ancienMatricule);
-            if(index!=-1){
-                liste.getElementAt(index).setAdresse(stagiaire.getAdresse());
-                liste.getElementAt(index).setNumero(stagiaire.getNumero());
-                liste.getElementAt(index).setEmail(stagiaire.getEmail());
-                liste.getElementAt(index).setNom(stagiaire.getNom());
-                liste.getElementAt(index).setPrenom(stagiaire.getPrenom());
-                liste.getElementAt(index).setDateNaissance(stagiaire.getDateNaissance());
-                liste.getElementAt(index).setGenre(stagiaire.getGenre());
-                liste.getElementAt(index).setGroupe(stagiaire.getGroupe());
-                liste.getElementAt(index).setSemestre(stagiaire.getSemestre());
-                liste.getElementAt(index).setLieuNaissance(stagiaire.getLieuNaissance());
-                liste.getElementAt(index).setSpecialite(stagiaire.getSpecialite());
-                liste.getElementAt(index).setModeApprentissage(stagiaire.getModeApprentissage());
-                liste.getElementAt(index).setMatricule(stagiaire.getMatricule());
+            int indexAncien=matriculeValide(ancienMatricule);
+            int indexNouveau=matriculeValide(stagiaire.getMatricule());
+            if(indexNouveau==indexAncien || (indexNouveau==-1 && indexAncien!=-1)){
+                liste.getElementAt(indexAncien).mettreAJour(stagiaire);
                 if(listeSpecialite.getIndexOf(stagiaire.getSpecialite())==-1)listeSpecialite.addElement(stagiaire.getSpecialite());
                 if(listeSemestre.getIndexOf(stagiaire.getSemestre()+"")==-1)listeSemestre.addElement(stagiaire.getSemestre()+"");
                 view.getListeStagiaire().clearSelection();
@@ -187,6 +180,8 @@ public class Controller{
                 }
                 model.mettreAJourStagiaire(stagiaire, ancienMatricule);
                 message( I18n.texte("message.MAJ"), I18n.texte("message.MAJ.titre"));
+            }else{
+                message(I18n.texte("message.mat2"), I18n.texte("message.mat2.titre"));
             }
         }
     }
@@ -239,12 +234,10 @@ public class Controller{
             if(view.getListeStagiaire().getSelectedValue()!=null){
                 int reponse=JOptionPane.showConfirmDialog(view, new JLabel(I18n.texte("option.sup")),I18n.texte("option.sup.titre"),JOptionPane.OK_CANCEL_OPTION);
                 if(reponse==JOptionPane.OK_OPTION){
-                    Object[] stagiaireSelectionne=view.getListeStagiaire().getSelectedValues();
-                    for(Object o:stagiaireSelectionne){
-                        Stagiaire stagiaire=(Stagiaire)o;
-                        model.supprimerStagiaire(stagiaire.getMatricule());
-                        liste.removeElement(o);
-                    }
+                    ProgressionSuppression prog=new ProgressionSuppression(view, true, model, liste,I18n.texte("prog.sup"));
+                    prog.setLocationRelativeTo(null);
+                    prog.demarreProgression();
+                    prog.setVisible(true);
                     view.getBtnSupprimerStagiaire().setEnabled(false);
                 }
             }else{
@@ -290,7 +283,7 @@ public class Controller{
             sauverFichier.setDialogTitle(I18n.texte("fileSaver.titre"));
             int selection=sauverFichier.showSaveDialog(view);
             if(selection==JFileChooser.APPROVE_OPTION){
-                model.exporterExcel(liste,sauverFichier.getSelectedFile().getAbsolutePath()+".csv");
+                model.exporterExcel(liste,sauverFichier.getSelectedFile().getAbsolutePath()+".csv",view);
                 message(I18n.texte("message.save"),"Excelُ");
             }
         });
@@ -301,7 +294,7 @@ public class Controller{
             ouvrirFichier.showDialog(view, I18n.texte("filechooser.open"));
             File fichier=ouvrirFichier.getSelectedFile();
             if(fichier!=null){
-                model.importerExcel(liste, fichier);
+                model.importerExcel(liste, fichier,view);
                 message(I18n.texte("message.add"),"Excelُ");
             }
         });
@@ -317,7 +310,10 @@ public class Controller{
     }
     private Stagiaire validerSyntaxe(){
         Date d=view.getDateNaissance().getDate();
-        if((new Date().getYear())-d.getYear()<15 || (new Date().getYear())-d.getYear()>35){
+        LocalDate dateAujourdhui=LocalDate.now();
+        LocalDate dateNaissance=d.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        long age=ChronoUnit.YEARS.between(dateNaissance, dateAujourdhui);
+        if(age <15 || age>35){
             message(I18n.texte("message.age"), I18n.texte("message.age.titre"));
             return null;
         }

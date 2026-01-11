@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Date;
+import outils.I18n;
 
 /**
  * @author Ould_Hamdi
@@ -144,6 +145,47 @@ public class Stagiaire {
     @Override
     public String toString() {
         return nom+" "+prenom;
+    }
+    public void mettreAJour(Stagiaire nouveauStagiaire){
+        setNom(nouveauStagiaire.getNom());
+        setPrenom(nouveauStagiaire.getPrenom());
+        setMatricule(nouveauStagiaire.getMatricule());
+        setDateNaissance(nouveauStagiaire.getDateNaissance());
+        setLieuNaissance(nouveauStagiaire.getLieuNaissance());
+        setAdresse(nouveauStagiaire.getAdresse());
+        setSemestre(nouveauStagiaire.getSemestre());
+        setSpecialite(nouveauStagiaire.getSpecialite());
+        setGroupe(nouveauStagiaire.getGroupe());
+        setGenre(nouveauStagiaire.getGenre());
+        setModeApprentissage(nouveauStagiaire.getModeApprentissage());
+        setEmail(nouveauStagiaire.getEmail());
+        setNumero(nouveauStagiaire.getNumero());
+        
+    }
+    public String toExcel(){
+        String formatText="\"%s\";";
+        String mode=I18n.texte("radio.cos");
+        switch(modeApprentissage){
+            case "residentiel"->mode=I18n.texte("radio.reside");
+            case "apprentissage"->mode=I18n.texte("radio.apprenti");
+        }
+        StringBuilder textExcel=new StringBuilder();
+        textExcel.append(formatText.formatted(matricule.replace("\"", "\"\"")));
+        textExcel.append(formatText.formatted(nom.replace("\"", "\"\"")));
+        textExcel.append(formatText.formatted(prenom.replace("\"", "\"\"")));
+        textExcel.append(formatText.formatted(dateNaissance.toString().replace("\"", "\"\"")));
+        textExcel.append(formatText.formatted(lieuNaissance.replace("\"", "\"\"")));
+        textExcel.append("\"").append(I18n.texte("radio."+genre).replace("\"", "\"\"")).append("\";");
+        textExcel.append(formatText.formatted(specialite.replace("\"", "\"\"")));
+        textExcel.append(formatText.formatted(semestre+""));
+        textExcel.append(formatText.formatted(groupe+""));
+        textExcel.append(formatText.formatted(mode));
+        textExcel.append(formatText.formatted(numero+""));
+        textExcel.append(formatText.formatted(email));
+        formatText="\"%s\"";
+        textExcel.append(formatText.formatted(adresse));
+        
+        return textExcel.toString();
     }
     
 }
