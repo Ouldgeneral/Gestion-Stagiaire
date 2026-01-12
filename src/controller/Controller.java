@@ -1,6 +1,8 @@
 package controller;
 
 import View.View;
+import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.BorderLayout;
 import java.awt.event.ItemEvent;
 import java.io.File;
@@ -19,6 +21,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -54,8 +58,15 @@ public class Controller{
         initialiserFiltrage();
     }
     public void demarrer(){
+        
         view.ajouterDocumentListener();
         model.chargerLangue(view);
+        FlatLightLaf.setup();
+        UIManager.put("Button.arc", 20);
+        UIManager.put("Component.arc", 20);
+        UIManager.put("TextComponent.arc", 990);
+        view.getDocument().putClientProperty(FlatClientProperties.COMPONENT_ROUND_RECT, 20);
+        SwingUtilities.updateComponentTreeUI(view);
         view.setVisible(true);
     }
     private void initialiserFiltrage(){

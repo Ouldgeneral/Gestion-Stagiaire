@@ -122,7 +122,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="225" y="57" width="650" height="458"/>
+              <AbsoluteConstraints x="226" y="57" width="-1" height="450"/>
             </Constraint>
           </Constraints>
 
@@ -272,13 +272,12 @@
                     <Property name="text" type="java.lang.String" value="Nom:"/>
                   </Properties>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXTextField" name="nom">
+                <Component class="javax.swing.JTextField" name="nom">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="Nom"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[230, 22]"/>
                     </Property>
-                    <Property name="prompt" type="java.lang.String" value="Said Ghiles"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -305,13 +304,12 @@
                     <Property name="text" type="java.lang.String" value="Prenom:"/>
                   </Properties>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXTextField" name="prenom">
+                <Component class="javax.swing.JTextField" name="prenom">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="Prenom"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[230, 22]"/>
                     </Property>
-                    <Property name="prompt" type="java.lang.String" value="Garoui"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -371,13 +369,12 @@
                     <Property name="text" type="java.lang.String" value="Adresse:"/>
                   </Properties>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXTextField" name="adresse">
+                <Component class="javax.swing.JTextField" name="adresse">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="adresse"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[220, 22]"/>
                     </Property>
-                    <Property name="prompt" type="java.lang.String" value="Tizi-Takjda-W.TiziOuzou"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -404,13 +401,12 @@
                     <Property name="text" type="java.lang.String" value="Email:"/>
                   </Properties>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXTextField" name="email">
+                <Component class="javax.swing.JTextField" name="email">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="Email"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[220, 22]"/>
                     </Property>
-                    <Property name="prompt" type="java.lang.String" value="garwisg@tizi.dz"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -437,13 +433,12 @@
                     <Property name="text" type="java.lang.String" value="Specialite:"/>
                   </Properties>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXTextField" name="specialite">
+                <Component class="javax.swing.JTextField" name="specialite">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="Specialite"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[170, 22]"/>
                     </Property>
-                    <Property name="prompt" type="java.lang.String" value="Developpeur AMP"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -470,13 +465,12 @@
                     <Property name="text" type="java.lang.String" value="Matricule:"/>
                   </Properties>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXTextField" name="matricule">
+                <Component class="javax.swing.JTextField" name="matricule">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="Matricule"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[170, 22]"/>
                     </Property>
-                    <Property name="prompt" type="java.lang.String" value="matcl2526"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -583,10 +577,9 @@
                     <Property name="text" type="java.lang.String" value="Groupe:"/>
                   </Properties>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXTextField" name="groupe">
+                <Component class="javax.swing.JTextField" name="groupe">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="Groupe"/>
-                    <Property name="prompt" type="java.lang.String" value="14"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -613,10 +606,9 @@
                     <Property name="text" type="java.lang.String" value="Semestre:"/>
                   </Properties>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXTextField" name="semestre">
+                <Component class="javax.swing.JTextField" name="semestre">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="Semestre"/>
-                    <Property name="prompt" type="java.lang.String" value="2"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -629,7 +621,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="240" y="110" width="390" height="40"/>
+                  <AbsoluteConstraints x="240" y="100" width="400" height="40"/>
                 </Constraint>
               </Constraints>
 
@@ -653,11 +645,18 @@
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                   <SubComponents>
                     <Component class="org.jdesktop.swingx.JXDatePicker" name="dateNaissance">
+                      <Properties>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[100, 24]"/>
+                        </Property>
+                      </Properties>
                     </Component>
-                    <Component class="org.jdesktop.swingx.JXTextField" name="lieu">
+                    <Component class="javax.swing.JTextField" name="lieu">
                       <Properties>
                         <Property name="toolTipText" type="java.lang.String" value="Lieu de Naissance"/>
-                        <Property name="prompt" type="java.lang.String" value="Tizi-Ouzou"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[133, 22]"/>
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -672,7 +671,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="320" y="140" width="220" height="30"/>
+                  <AbsoluteConstraints x="310" y="140" width="220" height="30"/>
                 </Constraint>
               </Constraints>
 
@@ -746,7 +745,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="225" y="28" width="-1" height="-1"/>
+              <AbsoluteConstraints x="226" y="28" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -785,17 +784,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="org.jdesktop.swingx.JXSearchField" name="rechercher">
-          <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Trouver un Stagiaire"/>
-            <Property name="prompt" type="java.lang.String" value="Ghiles Garoui"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="81" y="83" width="132" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
         <Component class="javax.swing.JLabel" name="lFiltre">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -887,6 +875,13 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JTextField" name="rechercher">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="81" y="83" width="139" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

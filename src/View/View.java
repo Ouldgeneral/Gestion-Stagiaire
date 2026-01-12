@@ -13,6 +13,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.ComponentOrientation;
 import java.awt.image.BufferedImage;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -24,16 +25,13 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import org.jdesktop.swingx.JXDatePicker;
 import org.jdesktop.swingx.JXFormattedTextField;
 import org.jdesktop.swingx.JXList;
-import org.jdesktop.swingx.JXSearchField;
-import org.jdesktop.swingx.JXTextField;
+import javax.swing.JTextField;
 import outils.I18n;
-
 /**
  *
  * @author Ould_Hamdi
@@ -42,7 +40,12 @@ public class View extends javax.swing.JFrame {
     /** Creates new form View */
     public View() {
         initComponents();
-        
+        nom.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.nom"));
+        prenom.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.prenom"));
+        lieu.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.lieu"));
+        specialite.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.spec"));
+        adresse.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.adresse"));
+        rechercher.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.rec"));
     }
 
     /** This method is called from within the constructor to
@@ -69,25 +72,25 @@ public class View extends javax.swing.JFrame {
         btnMAJ = new javax.swing.JButton();
         espaceNom = new javax.swing.JPanel();
         lNom = new javax.swing.JLabel();
-        nom = new org.jdesktop.swingx.JXTextField();
+        nom = new javax.swing.JTextField();
         espacePrenom = new javax.swing.JPanel();
         lPrenom = new javax.swing.JLabel();
-        prenom = new org.jdesktop.swingx.JXTextField();
+        prenom = new javax.swing.JTextField();
         espaceTelephone = new javax.swing.JPanel();
         lTelephone = new javax.swing.JLabel();
         numero = new org.jdesktop.swingx.JXFormattedTextField();
         espaceAdresse = new javax.swing.JPanel();
         lAdresse = new javax.swing.JLabel();
-        adresse = new org.jdesktop.swingx.JXTextField();
+        adresse = new javax.swing.JTextField();
         espaceEmail = new javax.swing.JPanel();
         lEmail = new javax.swing.JLabel();
-        email = new org.jdesktop.swingx.JXTextField();
+        email = new javax.swing.JTextField();
         espaceSpecialite = new javax.swing.JPanel();
         lSpecialite2 = new javax.swing.JLabel();
-        specialite = new org.jdesktop.swingx.JXTextField();
+        specialite = new javax.swing.JTextField();
         espaceMatricule = new javax.swing.JPanel();
         lMatricule = new javax.swing.JLabel();
-        matricule = new org.jdesktop.swingx.JXTextField();
+        matricule = new javax.swing.JTextField();
         espaceModeStage = new javax.swing.JPanel();
         lMode = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -96,15 +99,15 @@ public class View extends javax.swing.JFrame {
         coursDeSoir = new javax.swing.JRadioButton();
         espaceGroupe = new javax.swing.JPanel();
         lGroupe = new javax.swing.JLabel();
-        groupe = new org.jdesktop.swingx.JXTextField();
+        groupe = new javax.swing.JTextField();
         espaceSemestre = new javax.swing.JPanel();
         lSemestre2 = new javax.swing.JLabel();
-        semestre = new org.jdesktop.swingx.JXTextField();
+        semestre = new javax.swing.JTextField();
         espaceDateLieuNaissance = new javax.swing.JPanel();
         lDateLieu = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         dateNaissance = new org.jdesktop.swingx.JXDatePicker();
-        lieu = new org.jdesktop.swingx.JXTextField();
+        lieu = new javax.swing.JTextField();
         espaceGenre = new javax.swing.JPanel();
         lGenre = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -113,7 +116,6 @@ public class View extends javax.swing.JFrame {
         btnImprimDoc = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         listeStagiaire = new org.jdesktop.swingx.JXList();
-        rechercher = new org.jdesktop.swingx.JXSearchField();
         lFiltre = new javax.swing.JLabel();
         btnSupprimerStagiaire = new javax.swing.JButton();
         espaceSemestre2 = new javax.swing.JPanel();
@@ -122,6 +124,7 @@ public class View extends javax.swing.JFrame {
         espaceSpecialite2 = new javax.swing.JPanel();
         lSpecialite = new javax.swing.JLabel();
         listeSpecialite = new javax.swing.JComboBox<>();
+        rechercher = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         fichier = new javax.swing.JMenu();
         tabExcel = new javax.swing.JMenuItem();
@@ -190,7 +193,6 @@ public class View extends javax.swing.JFrame {
 
         nom.setToolTipText("Nom");
         nom.setPreferredSize(new java.awt.Dimension(230, 22));
-        nom.setPrompt("Said Ghiles");
         espaceNom.add(nom);
 
         document.add(espaceNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 290, 33));
@@ -203,7 +205,6 @@ public class View extends javax.swing.JFrame {
 
         prenom.setToolTipText("Prenom");
         prenom.setPreferredSize(new java.awt.Dimension(230, 22));
-        prenom.setPrompt("Garoui");
         espacePrenom.add(prenom);
 
         document.add(espacePrenom, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 291, -1));
@@ -229,7 +230,6 @@ public class View extends javax.swing.JFrame {
 
         adresse.setToolTipText("adresse");
         adresse.setPreferredSize(new java.awt.Dimension(220, 22));
-        adresse.setPrompt("Tizi-Takjda-W.TiziOuzou");
         espaceAdresse.add(adresse);
 
         document.add(espaceAdresse, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 320, 30));
@@ -242,7 +242,6 @@ public class View extends javax.swing.JFrame {
 
         email.setToolTipText("Email");
         email.setPreferredSize(new java.awt.Dimension(220, 22));
-        email.setPrompt("garwisg@tizi.dz");
         espaceEmail.add(email);
 
         document.add(espaceEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 290, 30));
@@ -255,7 +254,6 @@ public class View extends javax.swing.JFrame {
 
         specialite.setToolTipText("Specialite");
         specialite.setPreferredSize(new java.awt.Dimension(170, 22));
-        specialite.setPrompt("Developpeur AMP");
         espaceSpecialite.add(specialite);
 
         document.add(espaceSpecialite, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 250, 30));
@@ -268,7 +266,6 @@ public class View extends javax.swing.JFrame {
 
         matricule.setToolTipText("Matricule");
         matricule.setPreferredSize(new java.awt.Dimension(170, 22));
-        matricule.setPrompt("matcl2526");
         espaceMatricule.add(matricule);
 
         document.add(espaceMatricule, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 260, 30));
@@ -313,7 +310,6 @@ public class View extends javax.swing.JFrame {
         espaceGroupe.add(lGroupe);
 
         groupe.setToolTipText("Groupe");
-        groupe.setPrompt("14");
         espaceGroupe.add(groupe);
 
         document.add(espaceGroupe, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 130, 30));
@@ -325,7 +321,6 @@ public class View extends javax.swing.JFrame {
         espaceSemestre.add(lSemestre2);
 
         semestre.setToolTipText("Semestre");
-        semestre.setPrompt("2");
         espaceSemestre.add(semestre);
 
         document.add(espaceSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 140, 30));
@@ -337,15 +332,17 @@ public class View extends javax.swing.JFrame {
         espaceDateLieuNaissance.add(lDateLieu);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+
+        dateNaissance.setPreferredSize(new java.awt.Dimension(100, 24));
         jPanel1.add(dateNaissance);
 
         lieu.setToolTipText("Lieu de Naissance");
-        lieu.setPrompt("Tizi-Ouzou");
+        lieu.setPreferredSize(new java.awt.Dimension(133, 22));
         jPanel1.add(lieu);
 
         espaceDateLieuNaissance.add(jPanel1);
 
-        document.add(espaceDateLieuNaissance, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 390, 40));
+        document.add(espaceDateLieuNaissance, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 400, 40));
 
         espaceGenre.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -376,9 +373,9 @@ public class View extends javax.swing.JFrame {
 
         espaceGenre.add(jPanel2);
 
-        document.add(espaceGenre, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 220, 30));
+        document.add(espaceGenre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 220, 30));
 
-        gesta.add(document, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 57, 650, 458));
+        gesta.add(document, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 57, -1, 450));
 
         btnImprimDoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnImprimDoc.setText("Imprimer document");
@@ -387,7 +384,7 @@ public class View extends javax.swing.JFrame {
                 btnImprimDocActionPerformed(evt);
             }
         });
-        gesta.add(btnImprimDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 28, -1, -1));
+        gesta.add(btnImprimDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 28, -1, -1));
 
         listeStagiaire.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -400,10 +397,6 @@ public class View extends javax.swing.JFrame {
         jScrollPane2.setViewportView(listeStagiaire);
 
         gesta.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 112, 207, 393));
-
-        rechercher.setToolTipText("Trouver un Stagiaire");
-        rechercher.setPrompt("Ghiles Garoui");
-        gesta.add(rechercher, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 83, 132, -1));
 
         lFiltre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lFiltre.setText("Filtrer par");
@@ -435,6 +428,7 @@ public class View extends javax.swing.JFrame {
         espaceSpecialite2.add(listeSpecialite);
 
         gesta.add(espaceSpecialite2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 160, 30));
+        gesta.add(rechercher, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 83, 139, -1));
 
         fichier.setText("Fichier");
 
@@ -542,7 +536,7 @@ public class View extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aPropos;
-    private org.jdesktop.swingx.JXTextField adresse;
+    private javax.swing.JTextField adresse;
     private javax.swing.JMenu aide;
     private javax.swing.JRadioButton apprentissage;
     private javax.swing.JMenuItem arabe;
@@ -557,7 +551,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JRadioButton coursDeSoir;
     private org.jdesktop.swingx.JXDatePicker dateNaissance;
     private javax.swing.JPanel document;
-    private org.jdesktop.swingx.JXTextField email;
+    private javax.swing.JTextField email;
     private javax.swing.JPanel espaceAdresse;
     private javax.swing.JPanel espaceDateLieuNaissance;
     private javax.swing.JPanel espaceEmail;
@@ -578,7 +572,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JMenuItem francais;
     private javax.swing.ButtonGroup genre;
     private javax.swing.JPanel gesta;
-    private org.jdesktop.swingx.JXTextField groupe;
+    private javax.swing.JTextField groupe;
     private javax.swing.JRadioButton homme;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
@@ -604,25 +598,25 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel lSpecialite2;
     private javax.swing.JLabel lTelephone;
     private javax.swing.JMenu langue;
-    private org.jdesktop.swingx.JXTextField lieu;
+    private javax.swing.JTextField lieu;
     private javax.swing.JComboBox<String> listeSemestre;
     private javax.swing.JComboBox<String> listeSpecialite;
     private org.jdesktop.swingx.JXList listeStagiaire;
-    private org.jdesktop.swingx.JXTextField matricule;
+    private javax.swing.JTextField matricule;
     private javax.swing.ButtonGroup modeStage;
-    private org.jdesktop.swingx.JXTextField nom;
+    private javax.swing.JTextField nom;
     private org.jdesktop.swingx.JXFormattedTextField numero;
     private javax.swing.JPanel photo;
-    private org.jdesktop.swingx.JXTextField prenom;
+    private javax.swing.JTextField prenom;
     private javax.swing.JMenuItem quitter;
-    private org.jdesktop.swingx.JXSearchField rechercher;
+    private javax.swing.JTextField rechercher;
     private javax.swing.JRadioButton residentiel;
-    private org.jdesktop.swingx.JXTextField semestre;
-    private org.jdesktop.swingx.JXTextField specialite;
+    private javax.swing.JTextField semestre;
+    private javax.swing.JTextField specialite;
     private javax.swing.JMenuItem tabExcel;
     // End of variables declaration//GEN-END:variables
 
-    public JXTextField getAdresse() {
+    public JTextField getAdresse() {
         return adresse;
     }
 
@@ -651,7 +645,7 @@ public class View extends javax.swing.JFrame {
         return btnVider;
     }
 
-    public JXTextField getEmail() {
+    public JTextField getEmail() {
         return email;
     }
 
@@ -659,7 +653,7 @@ public class View extends javax.swing.JFrame {
         return genre;
     }
 
-    public JXTextField getGroupe() {
+    public JTextField getGroupe() {
         return groupe;
     }
 
@@ -673,7 +667,7 @@ public class View extends javax.swing.JFrame {
         return listeStagiaire;
     }
 
-    public JXTextField getMatricule() {
+    public JTextField getMatricule() {
         return matricule;
     }
 
@@ -682,7 +676,7 @@ public class View extends javax.swing.JFrame {
     }
 
 
-    public JXTextField getNom() {
+    public JTextField getNom() {
         return nom;
     }
 
@@ -690,19 +684,19 @@ public class View extends javax.swing.JFrame {
         return photo;
     }
 
-    public JXTextField getPrenom() {
+    public JTextField getPrenom() {
         return prenom;
     }
 
-    public JXSearchField getRechercher() {
+    public JTextField getRechercher() {
         return rechercher;
     }
 
-    public JXTextField getSemestre() {
+    public JTextField getSemestre() {
         return semestre;
     }
 
-    public JXTextField getSpecialite() {
+    public JTextField getSpecialite() {
         return specialite;
     }
 
@@ -922,7 +916,16 @@ public class View extends javax.swing.JFrame {
         rechercher.setToolTipText(I18n.texte("tooltip.rec"));
         codeQr.setToolTipText(I18n.texte("tooltip.codeQr"));
         listeStagiaire.setToolTipText(I18n.texte("tooltip.liste"));
-        
+        nom.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.nom"));
+        prenom.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.prenom"));
+        lieu.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.lieu"));
+        specialite.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.spec"));
+        adresse.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.adresse"));
+        rechercher.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.rec"));
+        groupe.putClientProperty("JTextField.placeholderText", "14");
+        semestre.putClientProperty("JTextField.placeholderText", "2");
+        email.putClientProperty("JTextField.placeholderText", "garwisg@tizi.dz");
+        matricule.putClientProperty("JTextField.placeholderText", "2121R4545");
         echangerPlace(espaceNom);
         echangerPlace(espacePrenom);
         echangerPlace(espaceDateLieuNaissance);
@@ -938,6 +941,22 @@ public class View extends javax.swing.JFrame {
         echangerPlace(espaceGroupe);
         echangerPlace(espaceModeStage);
         actualiserQr();
+        if(getLocale().getLanguage().equalsIgnoreCase("ar")){
+            nom.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+            prenom.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+            adresse.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+            lieu.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+            specialite.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+            rechercher.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        }else{
+            nom.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+            prenom.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+            adresse.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+            lieu.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+            specialite.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+            rechercher.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+            
+        }
     }
     private void echangerPlace(JPanel espace){
         Component[] composant=espace.getComponents();
