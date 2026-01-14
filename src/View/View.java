@@ -12,7 +12,6 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.image.BufferedImage;
 import java.text.SimpleDateFormat;
@@ -25,27 +24,24 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import org.jdesktop.swingx.JXDatePicker;
 import org.jdesktop.swingx.JXFormattedTextField;
 import org.jdesktop.swingx.JXList;
-import javax.swing.JTextField;
 import outils.I18n;
+
 /**
  *
  * @author Ould_Hamdi
  */
 public class View extends javax.swing.JFrame {
+
     /** Creates new form View */
     public View() {
         initComponents();
-        nom.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.nom"));
-        prenom.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.prenom"));
-        lieu.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.lieu"));
-        specialite.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.spec"));
-        adresse.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.adresse"));
-        rechercher.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.rec"));
+        
     }
 
     /** This method is called from within the constructor to
@@ -57,74 +53,73 @@ public class View extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        modeStage = new javax.swing.ButtonGroup();
         genre = new javax.swing.ButtonGroup();
+        modeStage = new javax.swing.ButtonGroup();
         gesta = new javax.swing.JPanel();
-        document = new javax.swing.JPanel();
-        photo = new javax.swing.JPanel();
-        lInfoP = new javax.swing.JLabel();
-        lInfoS = new javax.swing.JLabel();
-        btnChanger = new javax.swing.JButton();
-        btnSupprimer = new javax.swing.JButton();
-        btnEnregistrer = new javax.swing.JButton();
-        btnVider = new javax.swing.JButton();
-        codeQr = new javax.swing.JPanel();
-        btnMAJ = new javax.swing.JButton();
-        espaceNom = new javax.swing.JPanel();
-        lNom = new javax.swing.JLabel();
-        nom = new javax.swing.JTextField();
-        espacePrenom = new javax.swing.JPanel();
-        lPrenom = new javax.swing.JLabel();
-        prenom = new javax.swing.JTextField();
-        espaceTelephone = new javax.swing.JPanel();
-        lTelephone = new javax.swing.JLabel();
-        numero = new org.jdesktop.swingx.JXFormattedTextField();
-        espaceAdresse = new javax.swing.JPanel();
-        lAdresse = new javax.swing.JLabel();
-        adresse = new javax.swing.JTextField();
-        espaceEmail = new javax.swing.JPanel();
-        lEmail = new javax.swing.JLabel();
-        email = new javax.swing.JTextField();
-        espaceSpecialite = new javax.swing.JPanel();
-        lSpecialite2 = new javax.swing.JLabel();
-        specialite = new javax.swing.JTextField();
-        espaceMatricule = new javax.swing.JPanel();
-        lMatricule = new javax.swing.JLabel();
-        matricule = new javax.swing.JTextField();
-        espaceModeStage = new javax.swing.JPanel();
-        lMode = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        apprentissage = new javax.swing.JRadioButton();
-        residentiel = new javax.swing.JRadioButton();
-        coursDeSoir = new javax.swing.JRadioButton();
-        espaceGroupe = new javax.swing.JPanel();
-        lGroupe = new javax.swing.JLabel();
-        groupe = new javax.swing.JTextField();
-        espaceSemestre = new javax.swing.JPanel();
-        lSemestre2 = new javax.swing.JLabel();
-        semestre = new javax.swing.JTextField();
-        espaceDateLieuNaissance = new javax.swing.JPanel();
-        lDateLieu = new javax.swing.JLabel();
+        espacePrincipale = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        dateNaissance = new org.jdesktop.swingx.JXDatePicker();
-        lieu = new javax.swing.JTextField();
-        espaceGenre = new javax.swing.JPanel();
-        lGenre = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        femme = new javax.swing.JRadioButton();
-        homme = new javax.swing.JRadioButton();
+        lFiltre = new javax.swing.JLabel();
+        lSemestre2 = new javax.swing.JLabel();
+        lSpecialite2 = new javax.swing.JLabel();
+        listeSemestre = new javax.swing.JComboBox<>();
+        listeSpecialite = new javax.swing.JComboBox<>();
         btnImprimDoc = new javax.swing.JButton();
+        lMode2 = new javax.swing.JLabel();
+        listeModeStage = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        rechercher = new javax.swing.JTextField();
+        btnSupprimerStagiaire = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listeStagiaire = new org.jdesktop.swingx.JXList();
-        lFiltre = new javax.swing.JLabel();
-        btnSupprimerStagiaire = new javax.swing.JButton();
-        espaceSemestre2 = new javax.swing.JPanel();
-        lSemestre1 = new javax.swing.JLabel();
-        listeSemestre = new javax.swing.JComboBox<>();
-        espaceSpecialite2 = new javax.swing.JPanel();
+        document = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        photo = new javax.swing.JPanel();
+        btnSupprimer = new javax.swing.JButton();
+        btnChanger = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        lAdresse = new javax.swing.JLabel();
+        lInfoS = new javax.swing.JLabel();
+        adresse = new javax.swing.JTextField();
+        lPrenom = new javax.swing.JLabel();
+        lDateLieu = new javax.swing.JLabel();
+        lGenre = new javax.swing.JLabel();
+        lTelephone = new javax.swing.JLabel();
+        lEmail = new javax.swing.JLabel();
+        lNom = new javax.swing.JLabel();
+        nom = new javax.swing.JTextField();
+        prenom = new javax.swing.JTextField();
+        numero = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
+        jPanel8 = new javax.swing.JPanel();
+        dateNaissance = new org.jdesktop.swingx.JXDatePicker();
+        lieu = new javax.swing.JTextField();
+        jPanel9 = new javax.swing.JPanel();
+        homme = new javax.swing.JRadioButton();
+        femme = new javax.swing.JRadioButton();
+        lInfoP = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        codeQr = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        btnVider = new javax.swing.JButton();
+        btnEnregistrer = new javax.swing.JButton();
+        btnMAJ = new javax.swing.JButton();
+        jPanel13 = new javax.swing.JPanel();
+        lGroupe = new javax.swing.JLabel();
+        groupe = new javax.swing.JTextField();
+        lMatricule = new javax.swing.JLabel();
+        matricule = new javax.swing.JTextField();
         lSpecialite = new javax.swing.JLabel();
-        listeSpecialite = new javax.swing.JComboBox<>();
-        rechercher = new javax.swing.JTextField();
+        specialite = new javax.swing.JTextField();
+        lMode = new javax.swing.JLabel();
+        semestre = new javax.swing.JTextField();
+        lSemestre = new javax.swing.JLabel();
+        jPanel14 = new javax.swing.JPanel();
+        residentiel = new javax.swing.JRadioButton();
+        apprentissage = new javax.swing.JRadioButton();
+        coursDeSoir = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         fichier = new javax.swing.JMenu();
         tabExcel = new javax.swing.JMenuItem();
@@ -139,302 +134,537 @@ public class View extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gesta");
-        setResizable(false);
 
-        gesta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        gesta.setBackground(new java.awt.Color(255, 255, 255));
+        gesta.setLayout(new java.awt.BorderLayout());
 
-        document.setBackground(new java.awt.Color(0, 204, 204));
-        document.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        espacePrincipale.setLayout(new java.awt.BorderLayout());
 
-        photo.setToolTipText("Photo Profile");
-        photo.setLayout(new java.awt.BorderLayout());
-        document.add(photo, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 53, 210, 208));
+        jPanel1.setBackground(new java.awt.Color(245, 247, 250));
 
-        lInfoP.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lInfoP.setText("Informations Personnel");
-        document.add(lInfoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 17, -1, -1));
-
-        lInfoS.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lInfoS.setText("Informations Scolaire");
-        document.add(lInfoS, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, -1, -1));
-
-        btnChanger.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnChanger.setText("Changer");
-        btnChanger.setMargin(new java.awt.Insets(2, 0, 3, 14));
-        document.add(btnChanger, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 267, 77, -1));
-
-        btnSupprimer.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnSupprimer.setText("Supprimer");
-        document.add(btnSupprimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 267, -1, -1));
-
-        btnEnregistrer.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnEnregistrer.setText("Enregistrer");
-        btnEnregistrer.setEnabled(false);
-        document.add(btnEnregistrer, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 422, -1, -1));
-
-        btnVider.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnVider.setText("Vider Tout");
-        document.add(btnVider, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 422, -1, -1));
-
-        codeQr.setToolTipText("Code Qr");
-        codeQr.setLayout(new java.awt.BorderLayout());
-        document.add(codeQr, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, 142, 140));
-
-        btnMAJ.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnMAJ.setText("Mettre a jour");
-        btnMAJ.setEnabled(false);
-        document.add(btnMAJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 422, -1, -1));
-
-        espaceNom.setBackground(new java.awt.Color(0, 204, 204));
-
-        lNom.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lNom.setText("Nom:");
-        espaceNom.add(lNom);
-
-        nom.setToolTipText("Nom");
-        nom.setPreferredSize(new java.awt.Dimension(230, 22));
-        espaceNom.add(nom);
-
-        document.add(espaceNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 290, 33));
-
-        espacePrenom.setBackground(new java.awt.Color(0, 204, 204));
-
-        lPrenom.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lPrenom.setText("Prenom:");
-        espacePrenom.add(lPrenom);
-
-        prenom.setToolTipText("Prenom");
-        prenom.setPreferredSize(new java.awt.Dimension(230, 22));
-        espacePrenom.add(prenom);
-
-        document.add(espacePrenom, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 291, -1));
-
-        espaceTelephone.setBackground(new java.awt.Color(0, 204, 204));
-
-        lTelephone.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lTelephone.setText("Telephone:");
-        espaceTelephone.add(lTelephone);
-
-        numero.setToolTipText("Numero Telephone");
-        numero.setPreferredSize(new java.awt.Dimension(220, 22));
-        numero.setPrompt("0559876543");
-        espaceTelephone.add(numero);
-
-        document.add(espaceTelephone, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 300, 30));
-
-        espaceAdresse.setBackground(new java.awt.Color(0, 204, 204));
-
-        lAdresse.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lAdresse.setText("Adresse:");
-        espaceAdresse.add(lAdresse);
-
-        adresse.setToolTipText("adresse");
-        adresse.setPreferredSize(new java.awt.Dimension(220, 22));
-        espaceAdresse.add(adresse);
-
-        document.add(espaceAdresse, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 320, 30));
-
-        espaceEmail.setBackground(new java.awt.Color(0, 204, 204));
-
-        lEmail.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lEmail.setText("Email:");
-        espaceEmail.add(lEmail);
-
-        email.setToolTipText("Email");
-        email.setPreferredSize(new java.awt.Dimension(220, 22));
-        espaceEmail.add(email);
-
-        document.add(espaceEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 290, 30));
-
-        espaceSpecialite.setBackground(new java.awt.Color(0, 204, 204));
-
-        lSpecialite2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lSpecialite2.setText("Specialite:");
-        espaceSpecialite.add(lSpecialite2);
-
-        specialite.setToolTipText("Specialite");
-        specialite.setPreferredSize(new java.awt.Dimension(170, 22));
-        espaceSpecialite.add(specialite);
-
-        document.add(espaceSpecialite, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 250, 30));
-
-        espaceMatricule.setBackground(new java.awt.Color(0, 204, 204));
-
-        lMatricule.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lMatricule.setText("Matricule:");
-        espaceMatricule.add(lMatricule);
-
-        matricule.setToolTipText("Matricule");
-        matricule.setPreferredSize(new java.awt.Dimension(170, 22));
-        espaceMatricule.add(matricule);
-
-        document.add(espaceMatricule, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 260, 30));
-
-        espaceModeStage.setBackground(new java.awt.Color(0, 204, 204));
-
-        lMode.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lMode.setText("Mode Stage:");
-        espaceModeStage.add(lMode);
-
-        jPanel4.setBackground(new java.awt.Color(0, 204, 204));
-
-        apprentissage.setBackground(new java.awt.Color(0, 204, 204));
-        modeStage.add(apprentissage);
-        apprentissage.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        apprentissage.setText("Apprentissage");
-        apprentissage.setActionCommand("apprentissage");
-        jPanel4.add(apprentissage);
-
-        residentiel.setBackground(new java.awt.Color(0, 204, 204));
-        modeStage.add(residentiel);
-        residentiel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        residentiel.setText("Residentiel");
-        residentiel.setActionCommand("residentiel");
-        jPanel4.add(residentiel);
-
-        coursDeSoir.setBackground(new java.awt.Color(0, 204, 204));
-        modeStage.add(coursDeSoir);
-        coursDeSoir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        coursDeSoir.setText("Cours de Soir");
-        coursDeSoir.setActionCommand("cours de Soir");
-        jPanel4.add(coursDeSoir);
-
-        espaceModeStage.add(jPanel4);
-
-        document.add(espaceModeStage, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 391, 390, 30));
-
-        espaceGroupe.setBackground(new java.awt.Color(0, 204, 204));
-
-        lGroupe.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lGroupe.setText("Groupe:");
-        espaceGroupe.add(lGroupe);
-
-        groupe.setToolTipText("Groupe");
-        espaceGroupe.add(groupe);
-
-        document.add(espaceGroupe, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 130, 30));
-
-        espaceSemestre.setBackground(new java.awt.Color(0, 204, 204));
+        lFiltre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lFiltre.setForeground(new java.awt.Color(31, 60, 136));
+        lFiltre.setText("Filtrer par");
 
         lSemestre2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lSemestre2.setForeground(new java.awt.Color(31, 60, 136));
         lSemestre2.setText("Semestre:");
-        espaceSemestre.add(lSemestre2);
 
-        semestre.setToolTipText("Semestre");
-        espaceSemestre.add(semestre);
+        lSpecialite2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lSpecialite2.setForeground(new java.awt.Color(31, 60, 136));
+        lSpecialite2.setText("Specialite:");
 
-        document.add(espaceSemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 140, 30));
+        listeSemestre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
-        espaceDateLieuNaissance.setBackground(new java.awt.Color(0, 204, 204));
+        listeSpecialite.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
-        lDateLieu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lDateLieu.setText("Date-Lieu Naissance:");
-        espaceDateLieuNaissance.add(lDateLieu);
-
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
-
-        dateNaissance.setPreferredSize(new java.awt.Dimension(100, 24));
-        jPanel1.add(dateNaissance);
-
-        lieu.setToolTipText("Lieu de Naissance");
-        lieu.setPreferredSize(new java.awt.Dimension(133, 22));
-        jPanel1.add(lieu);
-
-        espaceDateLieuNaissance.add(jPanel1);
-
-        document.add(espaceDateLieuNaissance, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 400, 40));
-
-        espaceGenre.setBackground(new java.awt.Color(0, 204, 204));
-
-        lGenre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lGenre.setText("Genre:");
-        espaceGenre.add(lGenre);
-
-        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
-
-        femme.setBackground(new java.awt.Color(0, 204, 204));
-        genre.add(femme);
-        femme.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        femme.setText("Femme");
-        femme.setActionCommand("femme");
-        jPanel2.add(femme);
-
-        homme.setBackground(new java.awt.Color(0, 204, 204));
-        genre.add(homme);
-        homme.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        homme.setText("Homme");
-        homme.setActionCommand("homme");
-        homme.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hommeActionPerformed(evt);
-            }
-        });
-        jPanel2.add(homme);
-
-        espaceGenre.add(jPanel2);
-
-        document.add(espaceGenre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 220, 30));
-
-        gesta.add(document, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 57, -1, 450));
-
-        btnImprimDoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnImprimDoc.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnImprimDoc.setText("Imprimer document");
-        btnImprimDoc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImprimDocActionPerformed(evt);
+
+        lMode2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lMode2.setForeground(new java.awt.Color(31, 60, 136));
+        lMode2.setText("Mode Stage:");
+
+        listeModeStage.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        listeModeStage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tout الكل", "residentiel", "apprentissage", "Cours de Soir" }));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(lFiltre))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lSemestre2)
+                            .addComponent(lSpecialite2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(listeSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(listeSpecialite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(5, 5, 5)
+                        .addComponent(lMode2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(listeModeStage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnImprimDoc)))
+                .addContainerGap(494, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(lFiltre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lSemestre2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lSpecialite2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(listeSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lMode2))
+                            .addComponent(listeModeStage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(listeSpecialite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnImprimDoc)
+                .addContainerGap())
+        );
+
+        espacePrincipale.add(jPanel1, java.awt.BorderLayout.PAGE_START);
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setPreferredSize(new java.awt.Dimension(300, 400));
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        jPanel4.setBackground(new java.awt.Color(245, 247, 250));
+        jPanel4.setPreferredSize(new java.awt.Dimension(250, 50));
+        jPanel4.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                jPanel4AncestorMoved(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        gesta.add(btnImprimDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 28, -1, -1));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rechercher.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jPanel4.add(rechercher, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 170, 30));
+
+        btnSupprimerStagiaire.setBackground(new java.awt.Color(198, 40, 40));
+        btnSupprimerStagiaire.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnSupprimerStagiaire.setForeground(new java.awt.Color(255, 255, 255));
+        btnSupprimerStagiaire.setText("Supprimer");
+        jPanel4.add(btnSupprimerStagiaire, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, 30));
+
+        jPanel2.add(jPanel4, java.awt.BorderLayout.PAGE_START);
+
+        jPanel3.setBackground(new java.awt.Color(245, 247, 250));
 
         listeStagiaire.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        listeStagiaire.setToolTipText("Liste des Stagiaires");
-        listeStagiaire.setAutoCreateRowSorter(true);
-        listeStagiaire.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
+        listeStagiaire.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jScrollPane2.setViewportView(listeStagiaire);
 
-        gesta.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 112, 207, 393));
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
-        lFiltre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lFiltre.setText("Filtrer par");
-        gesta.add(lFiltre, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 6, -1, -1));
+        jPanel2.add(jPanel3, java.awt.BorderLayout.CENTER);
 
-        btnSupprimerStagiaire.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
-        btnSupprimerStagiaire.setText("Supprimer");
-        btnSupprimerStagiaire.setEnabled(false);
-        btnSupprimerStagiaire.setMargin(new java.awt.Insets(2, 0, 3, 14));
-        btnSupprimerStagiaire.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSupprimerStagiaireActionPerformed(evt);
-            }
-        });
-        gesta.add(btnSupprimerStagiaire, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 85, 69, -1));
+        espacePrincipale.add(jPanel2, java.awt.BorderLayout.LINE_START);
 
-        lSemestre1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lSemestre1.setText("Semestre:");
-        espaceSemestre2.add(lSemestre1);
+        document.setBackground(new java.awt.Color(51, 0, 51));
+        document.setForeground(new java.awt.Color(0, 0, 51));
+        document.setLayout(new java.awt.BorderLayout());
 
-        espaceSemestre2.add(listeSemestre);
+        jPanel5.setBackground(new java.awt.Color(255, 255, 0));
+        jPanel5.setPreferredSize(new java.awt.Dimension(549, 350));
+        jPanel5.setLayout(new java.awt.BorderLayout());
 
-        gesta.add(espaceSemestre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 150, 30));
+        jPanel6.setBackground(new java.awt.Color(63, 187, 192));
+        jPanel6.setPreferredSize(new java.awt.Dimension(250, 250));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lSpecialite.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        photo.setBackground(new java.awt.Color(245, 247, 250));
+        photo.setLayout(new javax.swing.BoxLayout(photo, javax.swing.BoxLayout.LINE_AXIS));
+        jPanel6.add(photo, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 32, 210, 220));
+
+        btnSupprimer.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnSupprimer.setText("Supprimer");
+        jPanel6.add(btnSupprimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, -1));
+
+        btnChanger.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnChanger.setText("Changer");
+        jPanel6.add(btnChanger, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
+
+        jPanel5.add(jPanel6, java.awt.BorderLayout.LINE_START);
+
+        jPanel7.setBackground(new java.awt.Color(63, 187, 192));
+        jPanel7.setPreferredSize(new java.awt.Dimension(257, 100));
+
+        lAdresse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lAdresse.setForeground(new java.awt.Color(31, 60, 136));
+        lAdresse.setText("Adresse:");
+
+        lInfoS.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lInfoS.setForeground(new java.awt.Color(31, 60, 136));
+        lInfoS.setText("Informations Scolaire");
+
+        adresse.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        lPrenom.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lPrenom.setForeground(new java.awt.Color(31, 60, 136));
+        lPrenom.setText("Prenom:");
+
+        lDateLieu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lDateLieu.setForeground(new java.awt.Color(31, 60, 136));
+        lDateLieu.setText("Date-Lieu Naissance:");
+
+        lGenre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lGenre.setForeground(new java.awt.Color(31, 60, 136));
+        lGenre.setText("Genre:");
+
+        lTelephone.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lTelephone.setForeground(new java.awt.Color(31, 60, 136));
+        lTelephone.setText("Telephone:");
+
+        lEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lEmail.setForeground(new java.awt.Color(31, 60, 136));
+        lEmail.setText("Email:");
+
+        lNom.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lNom.setForeground(new java.awt.Color(31, 60, 136));
+        lNom.setText("Nom:");
+
+        nom.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        prenom.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        numero.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        email.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jPanel8.setBackground(new java.awt.Color(63, 187, 192));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel8.add(dateNaissance, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, -1));
+
+        lieu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jPanel8.add(lieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 130, -1));
+
+        jPanel9.setBackground(new java.awt.Color(63, 187, 192));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        genre.add(homme);
+        homme.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        homme.setForeground(new java.awt.Color(31, 60, 136));
+        homme.setText("Homme");
+        homme.setActionCommand("homme");
+        jPanel9.add(homme, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
+        genre.add(femme);
+        femme.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        femme.setForeground(new java.awt.Color(31, 60, 136));
+        femme.setText("Femme");
+        femme.setActionCommand("femme");
+        jPanel9.add(femme, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, -1, -1));
+
+        lInfoP.setBackground(new java.awt.Color(31, 60, 136));
+        lInfoP.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lInfoP.setForeground(new java.awt.Color(31, 60, 136));
+        lInfoP.setText("Informations Personnel");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(lInfoP))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(lNom)
+                .addGap(24, 24, 24)
+                .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(lPrenom)
+                .addGap(19, 19, 19)
+                .addComponent(prenom, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lDateLieu)
+                .addGap(23, 23, 23)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(lGenre)
+                .addGap(24, 24, 24)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(lTelephone)
+                .addGap(25, 25, 25)
+                .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(lInfoS))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lAdresse)
+                    .addComponent(lEmail))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adresse, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(lInfoP)
+                .addGap(5, 5, 5)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lNom)
+                    .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lPrenom)
+                    .addComponent(prenom, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lDateLieu)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lGenre)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lTelephone)
+                    .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lEmail))
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(adresse, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lAdresse)))
+                .addGap(18, 18, 18)
+                .addComponent(lInfoS))
+        );
+
+        jPanel5.add(jPanel7, java.awt.BorderLayout.CENTER);
+
+        document.add(jPanel5, java.awt.BorderLayout.PAGE_START);
+
+        jPanel11.setBackground(new java.awt.Color(63, 187, 192));
+        jPanel11.setPreferredSize(new java.awt.Dimension(200, 191));
+
+        codeQr.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(codeQr, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(codeQr, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        document.add(jPanel11, java.awt.BorderLayout.LINE_END);
+
+        jPanel12.setBackground(new java.awt.Color(63, 187, 192));
+        jPanel12.setPreferredSize(new java.awt.Dimension(780, 50));
+
+        btnVider.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnVider.setText("Vider");
+
+        btnEnregistrer.setBackground(new java.awt.Color(46, 125, 50));
+        btnEnregistrer.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnEnregistrer.setForeground(new java.awt.Color(255, 255, 255));
+        btnEnregistrer.setText("Enregistrer");
+
+        btnMAJ.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnMAJ.setText("Mettre a jour");
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(btnVider)
+                .addGap(50, 50, 50)
+                .addComponent(btnEnregistrer)
+                .addGap(57, 57, 57)
+                .addComponent(btnMAJ)
+                .addContainerGap(232, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVider)
+                    .addComponent(btnEnregistrer)
+                    .addComponent(btnMAJ))
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        document.add(jPanel12, java.awt.BorderLayout.PAGE_END);
+
+        jPanel13.setBackground(new java.awt.Color(63, 187, 192));
+        jPanel13.setPreferredSize(new java.awt.Dimension(600, 191));
+
+        lGroupe.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lGroupe.setForeground(new java.awt.Color(31, 60, 136));
+        lGroupe.setText("Groupe:");
+
+        groupe.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        lMatricule.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lMatricule.setForeground(new java.awt.Color(31, 60, 136));
+        lMatricule.setText("Matricule:");
+
+        matricule.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        lSpecialite.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lSpecialite.setForeground(new java.awt.Color(31, 60, 136));
         lSpecialite.setText("Specialite:");
-        espaceSpecialite2.add(lSpecialite);
 
-        espaceSpecialite2.add(listeSpecialite);
+        specialite.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        gesta.add(espaceSpecialite2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 160, 30));
-        gesta.add(rechercher, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 83, 139, -1));
+        lMode.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lMode.setForeground(new java.awt.Color(31, 60, 136));
+        lMode.setText("Mode  Stage:");
+
+        semestre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        lSemestre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lSemestre.setForeground(new java.awt.Color(31, 60, 136));
+        lSemestre.setText("Semestre:");
+
+        jPanel14.setBackground(new java.awt.Color(63, 187, 192));
+        jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        modeStage.add(residentiel);
+        residentiel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        residentiel.setForeground(new java.awt.Color(31, 60, 136));
+        residentiel.setText("Residentiel");
+        residentiel.setActionCommand("residentiel");
+        jPanel14.add(residentiel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
+        modeStage.add(apprentissage);
+        apprentissage.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        apprentissage.setForeground(new java.awt.Color(31, 60, 136));
+        apprentissage.setText("Apprentssage");
+        apprentissage.setActionCommand("apprentissage");
+        jPanel14.add(apprentissage, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 140, -1));
+
+        modeStage.add(coursDeSoir);
+        coursDeSoir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        coursDeSoir.setForeground(new java.awt.Color(31, 60, 136));
+        coursDeSoir.setText("Cours de Soir");
+        coursDeSoir.setActionCommand("cours de Soir");
+        jPanel14.add(coursDeSoir, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, -1, -1));
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(lMatricule)
+                .addGap(14, 14, 14)
+                .addComponent(matricule, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(lSpecialite)
+                .addGap(13, 13, 13)
+                .addComponent(specialite, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(lSemestre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(semestre, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(lGroupe)
+                .addGap(22, 22, 22)
+                .addComponent(groupe, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lMode)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lMatricule)
+                    .addComponent(matricule, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lSpecialite))
+                    .addComponent(specialite, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(semestre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lSemestre))
+                    .addComponent(lGroupe)
+                    .addComponent(groupe, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lMode)
+                    .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        document.add(jPanel13, java.awt.BorderLayout.CENTER);
+
+        espacePrincipale.add(document, java.awt.BorderLayout.CENTER);
+
+        gesta.add(espacePrincipale, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(gesta, java.awt.BorderLayout.CENTER);
+
+        jMenuBar1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         fichier.setText("Fichier");
 
+        tabExcel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tabExcel.setText("Exporter la liste en tableau Excel");
         fichier.add(tabExcel);
 
+        ficExcel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ficExcel.setText("Importer une liste Excel");
         fichier.add(ficExcel);
 
@@ -443,9 +673,11 @@ public class View extends javax.swing.JFrame {
         langue.setText("Langue");
         langue.setToolTipText("");
 
+        francais.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         francais.setText("Francais");
         langue.add(francais);
 
+        arabe.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         arabe.setText("العربية");
         langue.add(arabe);
 
@@ -453,10 +685,12 @@ public class View extends javax.swing.JFrame {
 
         aide.setText("Aide");
 
+        aPropos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         aPropos.setText("A propos");
         aide.add(aPropos);
         aide.add(jSeparator1);
 
+        quitter.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         quitter.setText("Quitter");
         aide.add(quitter);
 
@@ -464,37 +698,12 @@ public class View extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(gesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(gesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnImprimDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimDocActionPerformed
+    private void jPanel4AncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanel4AncestorMoved
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnImprimDocActionPerformed
-
-    private void btnSupprimerStagiaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupprimerStagiaireActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSupprimerStagiaireActionPerformed
-
-    private void hommeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hommeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hommeActionPerformed
+    }//GEN-LAST:event_jPanel4AncestorMoved
 
     /**
      * @param args the command line arguments
@@ -522,14 +731,12 @@ public class View extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new View().setVisible(true);
+                View l=new View();
+                l.setVisible(true);
             }
         });
     }
@@ -552,20 +759,7 @@ public class View extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker dateNaissance;
     private javax.swing.JPanel document;
     private javax.swing.JTextField email;
-    private javax.swing.JPanel espaceAdresse;
-    private javax.swing.JPanel espaceDateLieuNaissance;
-    private javax.swing.JPanel espaceEmail;
-    private javax.swing.JPanel espaceGenre;
-    private javax.swing.JPanel espaceGroupe;
-    private javax.swing.JPanel espaceMatricule;
-    private javax.swing.JPanel espaceModeStage;
-    private javax.swing.JPanel espaceNom;
-    private javax.swing.JPanel espacePrenom;
-    private javax.swing.JPanel espaceSemestre;
-    private javax.swing.JPanel espaceSemestre2;
-    private javax.swing.JPanel espaceSpecialite;
-    private javax.swing.JPanel espaceSpecialite2;
-    private javax.swing.JPanel espaceTelephone;
+    private javax.swing.JPanel espacePrincipale;
     private javax.swing.JRadioButton femme;
     private javax.swing.JMenuItem ficExcel;
     private javax.swing.JMenu fichier;
@@ -576,8 +770,18 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JRadioButton homme;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JLabel lAdresse;
@@ -590,22 +794,24 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel lInfoS;
     private javax.swing.JLabel lMatricule;
     private javax.swing.JLabel lMode;
+    private javax.swing.JLabel lMode2;
     private javax.swing.JLabel lNom;
     private javax.swing.JLabel lPrenom;
-    private javax.swing.JLabel lSemestre1;
+    private javax.swing.JLabel lSemestre;
     private javax.swing.JLabel lSemestre2;
     private javax.swing.JLabel lSpecialite;
     private javax.swing.JLabel lSpecialite2;
     private javax.swing.JLabel lTelephone;
     private javax.swing.JMenu langue;
     private javax.swing.JTextField lieu;
+    private javax.swing.JComboBox<String> listeModeStage;
     private javax.swing.JComboBox<String> listeSemestre;
     private javax.swing.JComboBox<String> listeSpecialite;
     private org.jdesktop.swingx.JXList listeStagiaire;
     private javax.swing.JTextField matricule;
     private javax.swing.ButtonGroup modeStage;
     private javax.swing.JTextField nom;
-    private org.jdesktop.swingx.JXFormattedTextField numero;
+    private javax.swing.JTextField numero;
     private javax.swing.JPanel photo;
     private javax.swing.JTextField prenom;
     private javax.swing.JMenuItem quitter;
@@ -615,7 +821,6 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTextField specialite;
     private javax.swing.JMenuItem tabExcel;
     // End of variables declaration//GEN-END:variables
-
     public JTextField getAdresse() {
         return adresse;
     }
@@ -700,7 +905,7 @@ public class View extends javax.swing.JFrame {
         return specialite;
     }
 
-    public JXFormattedTextField getTelephone() {
+    public JTextField getTelephone() {
         return numero;
     }
 
@@ -759,7 +964,7 @@ public class View extends javax.swing.JFrame {
                     :null,
                     lieu.getText(),
                     lSpecialite.getText(),specialite.getText(),
-                    lSemestre1.getText(),semestre.getText(),
+                    lSemestre.getText(),semestre.getText(),
                     lMatricule.getText(),matricule.getText()
                     );
         
@@ -826,6 +1031,10 @@ public class View extends javax.swing.JFrame {
         return listeSpecialite;
     }
 
+    public JComboBox<String> getListeModeStage() {
+        return listeModeStage;
+    }
+    
     public JButton getBtnMAJ() {
         return btnMAJ;
     }
@@ -865,7 +1074,7 @@ public class View extends javax.swing.JFrame {
     }
     
     public void appliquerLangue(){
-        lSemestre1.setText(I18n.texte("label.semestre"));
+        lSemestre.setText(I18n.texte("label.semestre"));
         lSemestre2.setText(I18n.texte("label.semestre"));
         lSpecialite.setText(I18n.texte("label.spec"));
         lSpecialite2.setText(I18n.texte("label.spec"));
@@ -891,6 +1100,7 @@ public class View extends javax.swing.JFrame {
         lMatricule.setText(I18n.texte("label.matricule"));
         lGroupe.setText(I18n.texte("label.groupe"));
         lMode.setText(I18n.texte("label.modeStage"));
+        lMode2.setText(I18n.texte("label.modeStage"));
         lGenre.setText(I18n.texte("label.genre"));
         lInfoP.setText(I18n.texte("label.infoP"));
         lInfoS.setText(I18n.texte("label.infoS"));
@@ -915,7 +1125,17 @@ public class View extends javax.swing.JFrame {
         photo.setToolTipText(I18n.texte("tooltip.photo"));
         rechercher.setToolTipText(I18n.texte("tooltip.rec"));
         codeQr.setToolTipText(I18n.texte("tooltip.codeQr"));
-        listeStagiaire.setToolTipText(I18n.texte("tooltip.liste"));
+        jScrollPane2.setToolTipText(I18n.texte("tooltip.liste"));
+        textIndication();
+        actualiserQr();
+        if(getLocale().getLanguage().equalsIgnoreCase("ar")){
+            applyComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        }else{
+            applyComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+            
+        }
+    }
+    public void textIndication(){
         nom.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.nom"));
         prenom.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.prenom"));
         lieu.putClientProperty("JTextField.placeholderText", I18n.texte("prompt.lieu"));
@@ -926,45 +1146,6 @@ public class View extends javax.swing.JFrame {
         semestre.putClientProperty("JTextField.placeholderText", "2");
         email.putClientProperty("JTextField.placeholderText", "garwisg@tizi.dz");
         matricule.putClientProperty("JTextField.placeholderText", "2121R4545");
-        echangerPlace(espaceNom);
-        echangerPlace(espacePrenom);
-        echangerPlace(espaceDateLieuNaissance);
-        echangerPlace(espaceTelephone);
-        echangerPlace(espaceEmail);
-        echangerPlace(espaceAdresse);
-        echangerPlace(espaceMatricule);
-        echangerPlace(espaceSemestre);
-        echangerPlace(espaceSemestre2);
-        echangerPlace(espaceSpecialite);
-        echangerPlace(espaceSpecialite2);
-        echangerPlace(espaceGenre);
-        echangerPlace(espaceGroupe);
-        echangerPlace(espaceModeStage);
-        actualiserQr();
-        if(getLocale().getLanguage().equalsIgnoreCase("ar")){
-            nom.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-            prenom.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-            adresse.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-            lieu.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-            specialite.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-            rechercher.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        }else{
-            nom.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-            prenom.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-            adresse.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-            lieu.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-            specialite.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-            rechercher.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-            
-        }
-    }
-    private void echangerPlace(JPanel espace){
-        Component[] composant=espace.getComponents();
-        espace.remove(composant[0]);
-        espace.add(composant[0]);
-        espace.revalidate();
-        espace.repaint();
-        
-
+        numero.putClientProperty("JTextField.placeholderText", "0559876543");
     }
 }

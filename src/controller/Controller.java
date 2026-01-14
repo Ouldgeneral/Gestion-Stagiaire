@@ -4,6 +4,7 @@ import View.View;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.io.File;
 import java.time.LocalDate;
@@ -44,6 +45,7 @@ public class Controller{
     DefaultComboBoxModel<String> listeSemestre;
     String semestre=I18n.texte("combo.text");
     String specialite=I18n.texte("combo.text");
+    String mode=I18n.texte("combo.text");
     public Controller(View view,Model model){
         this.view=view;
         this.model=model;
@@ -65,6 +67,8 @@ public class Controller{
         UIManager.put("Button.arc", 20);
         UIManager.put("Component.arc", 20);
         UIManager.put("TextComponent.arc", 990);
+        UIManager.put("Panel.background", new Color(245,247,250));
+        view.textIndication();
         view.getDocument().putClientProperty(FlatClientProperties.COMPONENT_ROUND_RECT, 20);
         SwingUtilities.updateComponentTreeUI(view);
         view.setVisible(true);
@@ -80,6 +84,13 @@ public class Controller{
         view.getListeSpecialite().addItemListener(e->{
             if(e.getStateChange()==ItemEvent.SELECTED){
                 specialite=(String)e.getItem();
+                filtrer();
+            }
+            
+        });
+        view.getListeModeStage().addItemListener(e->{
+            if(e.getStateChange()==ItemEvent.SELECTED){
+                mode=(String)e.getItem();
                 filtrer();
             }
             
@@ -111,6 +122,15 @@ public class Controller{
             }
         }else{
             listeFiltrer=liste;
+        }
+        DefaultListModel<Stagiaire> liste2Filtrer=new DefaultListModel<>();
+        if(!mode.equals(I18n.texte("combo.text"))){
+            for(int i=0;i<listeFiltrer.size();i++){
+                if(listeFiltrer.getElementAt(i).getModeApprentissage().equalsIgnoreCase(mode)){
+                    liste2Filtrer.addElement(listeFiltrer.getElementAt(i));
+                }
+            }
+            listeFiltrer=liste2Filtrer;
         }
         view.getListeStagiaire().setModel(listeFiltrer);
         
@@ -243,7 +263,9 @@ public class Controller{
         });
         view.getBtnSupprimerStagiaire().addActionListener(e->{
             if(view.getListeStagiaire().getSelectedValue()!=null){
-                int reponse=JOptionPane.showConfirmDialog(view, new JLabel(I18n.texte("option.sup")),I18n.texte("option.sup.titre"),JOptionPane.OK_CANCEL_OPTION);
+                JLabel textmessage=new JLabel(I18n.texte("option.sup"));
+                textmessage.setFont(textmessage.getFont().deriveFont(24f));
+                int reponse=JOptionPane.showConfirmDialog(view, textmessage,I18n.texte("option.sup.titre"),JOptionPane.OK_CANCEL_OPTION);
                 if(reponse==JOptionPane.OK_OPTION){
                     ProgressionSuppression prog=new ProgressionSuppression(view, true, model, liste,I18n.texte("prog.sup"));
                     prog.setLocationRelativeTo(null);
@@ -290,6 +312,10 @@ public class Controller{
             model.changerLangue(Locale.FRENCH, view);
         });
         view.getTabExcel().addActionListener(e->{
+            if(liste.isEmpty()){
+                message(I18n.texte("excel.error"), "Excel");
+                return;
+            }
             JFileChooser sauverFichier=new JFileChooser();
             sauverFichier.setDialogTitle(I18n.texte("fileSaver.titre"));
             int selection=sauverFichier.showSaveDialog(view);
@@ -312,7 +338,9 @@ public class Controller{
     }
     
     private void message(String message,String titre){
-        JXDialog dialog=new JXDialog(new JLabel(message));
+        JLabel textMessage=new JLabel(message);
+        textMessage.setFont(textMessage.getFont().deriveFont(24f));
+        JXDialog dialog=new JXDialog(textMessage);
         dialog.setTitle(titre);
         dialog.setModal(true);
         dialog.pack();
