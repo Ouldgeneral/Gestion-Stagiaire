@@ -23,7 +23,7 @@ public class ProgressionSuppression extends javax.swing.JDialog {
      */
     View parent;
     Model model;
-    DefaultListModel liste;
+    DefaultListModel<Stagiaire> liste;
     Supprimer supprimer;
     ArrayList<Stagiaire> supprimerDeLaListe;
     ArrayList<Stagiaire> supprimerDeLaBD;

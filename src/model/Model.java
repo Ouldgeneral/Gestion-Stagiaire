@@ -87,7 +87,7 @@ public class Model {
     public void mettreAJourStagiaire(Stagiaire stagiaire,String ancienMatricule){
         baseDonnee.mettreStagiaireAJour(stagiaire, ancienMatricule);
     }
-    public DefaultListModel<Stagiaire> chargerListe(DefaultComboBoxModel listeSemestre,DefaultComboBoxModel listeSpecialite){
+    public DefaultListModel<Stagiaire> chargerListe(DefaultComboBoxModel<String> listeSemestre,DefaultComboBoxModel<String> listeSpecialite){
         DefaultListModel<Stagiaire> liste=baseDonnee.chargerListe();
         listeSemestre.addElement(I18n.texte("combo.text"));
         listeSpecialite.addElement(I18n.texte("combo.text"));
@@ -139,7 +139,7 @@ public class Model {
             }
         }
     }
-    public void exporterExcel(DefaultListModel liste,String nomFichier,View view){
+    public void exporterExcel(DefaultListModel<Stagiaire> liste,String nomFichier,View view){
         String[] colonnes={
             I18n.texte("label.matricule"),I18n.texte("label.nom"),I18n.texte("label.prenom"),I18n.texte("tooltip.date"),I18n.texte("tooltip.lieu"),
             I18n.texte("label.genre"),I18n.texte("label.spec"),I18n.texte("label.semestre"),I18n.texte("label.groupe"),I18n.texte("label.modeStage"),
@@ -150,7 +150,7 @@ public class Model {
         }
         Excel.tableExcel(liste, nomFichier,colonnes,view);
     }
-    public void importerExcel(DefaultListModel liste,File fichier,View view){
+    public void importerExcel(DefaultListModel<Stagiaire> liste,File fichier,View view){
         try {
             String contenuFichier=Files.readString(Paths.get(fichier.getAbsolutePath()));
             if(contenuFichier.isEmpty())return;
@@ -178,7 +178,7 @@ public class Model {
                 String[] ligne=m.group().replace("\"", "").split(";");
                 Object o=validerSyntaxe(ligne,liste);
                 if(o instanceof Stagiaire stagiaire){
-                    liste.addElement(o);
+                    liste.addElement((Stagiaire)o);
                     ajouterStagiaire(stagiaire);
                 }else{
                     erreur=true;
@@ -204,7 +204,7 @@ public class Model {
         } catch (IOException ex) {
         }
     }
-        private Object validerSyntaxe(String[] ligne,DefaultListModel liste){
+        private Object validerSyntaxe(String[] ligne,DefaultListModel<Stagiaire> liste){
         Date d=null;
         try {
             DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
