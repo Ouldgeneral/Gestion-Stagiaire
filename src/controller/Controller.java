@@ -6,6 +6,8 @@ import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -60,7 +62,9 @@ public class Controller{
         initialiserFiltrage();
     }
     public void demarrer(){
-        
+        view.ajouterSourisListener();
+        view.getBtnChanger().setVisible(false);
+        view.getBtnSupprimer().setVisible(false);
         view.ajouterDocumentListener();
         model.chargerLangue(view);
         FlatLightLaf.setup();
@@ -68,7 +72,9 @@ public class Controller{
         UIManager.put("Component.arc", 20);
         UIManager.put("TextComponent.arc", 990);
         UIManager.put("Panel.background", new Color(245,247,250));
+        view.getEspaceImage().putClientProperty(FlatClientProperties.STYLE,"arc:25;");
         view.textIndication();
+        view.getEffectif().setText("0/"+liste.size());
         view.getDocument().putClientProperty(FlatClientProperties.COMPONENT_ROUND_RECT, 20);
         SwingUtilities.updateComponentTreeUI(view);
         view.setVisible(true);
@@ -132,12 +138,14 @@ public class Controller{
             }
             listeFiltrer=liste2Filtrer;
         }
+        view.getEffectif().setText("0/"+listeFiltrer.size());
         view.getListeStagiaire().setModel(listeFiltrer);
         
     }
     private void initialiserRecherche(){
         view.getListeStagiaire().setAutoCreateRowSorter(true);
         view.getListeStagiaire().getSelectionModel().addListSelectionListener(e->{
+            view.getEffectif().setText(view.getListeStagiaire().getSelectedIndices().length+"/"+view.getListeStagiaire().getModel().getSize());
             Stagiaire stagiaire=(Stagiaire)view.getListeStagiaire().getSelectedValue();
             if(stagiaire!=null){
                 infoStagiaire(stagiaire);
@@ -169,8 +177,10 @@ public class Controller{
             }
         }
         if(!listeFiltrer.isEmpty()){
+            view.getEffectif().setText("0/"+listeFiltrer.size());
             view.getListeStagiaire().setModel(listeFiltrer);
         }else{
+            view.getEffectif().setText("0/"+liste.size());
             view.getListeStagiaire().setModel(liste);
         }
     }
@@ -187,6 +197,7 @@ public class Controller{
             if(photo!=null)model.enregistrerImage(photo,stagiaire.getMatricule());
             if(listeSpecialite.getIndexOf(stagiaire.getSpecialite())==-1)listeSpecialite.addElement(stagiaire.getSpecialite());
             if(listeSemestre.getIndexOf(stagiaire.getSemestre()+"")==-1)listeSemestre.addElement(stagiaire.getSemestre()+"");
+            view.getEffectif().setText("0/"+liste.size());
         }
     }
     public void mettreAJour(){
@@ -229,12 +240,15 @@ public class Controller{
             ouvrirImage.setFileFilter(new FileNameExtensionFilter(I18n.texte("filechooser.type"), "png","jpg","jpeg"));
             ouvrirImage.showDialog(view, I18n.texte("filechooser.open"));
             photo=ouvrirImage.getSelectedFile();
+            view.getBtnChanger().setVisible(false);
+            view.getBtnSupprimer().setVisible(false);
             if(photo==null)return;
             JPanel image=new ImagePanel(ouvrirImage.getSelectedFile().getAbsolutePath());
             view.getPhoto().removeAll();
             view.getPhoto().add(image,BorderLayout.CENTER);
             view.getPhoto().revalidate();
             view.getPhoto().repaint();
+            
             
         });
         view.getBtnSupprimer().addActionListener(e->{
@@ -283,18 +297,8 @@ public class Controller{
                 for(Object o:stagiaireSelectionne){
                     Stagiaire stagiaire=(Stagiaire)o;
                     infoStagiaire(stagiaire);
-                    view.getBtnSupprimer().setVisible(false);
-                    view.getBtnChanger().setVisible(false);
-                    view.getBtnVider().setVisible(false);
-                    view.getBtnMAJ().setVisible(false);
-                    view.getBtnEnregistrer().setVisible(false);
                     model.imprimerDocument(view.getDocument(), view.getMatricule().getText());
                 }
-                view.getBtnSupprimer().setVisible(true);
-                view.getBtnChanger().setVisible(true);
-                view.getBtnVider().setVisible(true);
-                view.getBtnMAJ().setVisible(true);
-                view.getBtnEnregistrer().setVisible(true);
                 message(I18n.texte("message.imp"),I18n.texte("message.imp.titre"));
             }
             else{
