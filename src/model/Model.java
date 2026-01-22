@@ -15,6 +15,9 @@ import java.nio.file.StandardCopyOption;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -206,7 +209,10 @@ public class Model {
         try {
             DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
             d = df.parse(ligne[3]);
-            if((new Date().getYear())-d.getYear()<15 || (new Date().getYear())-d.getYear()>35){
+            LocalDate dateAujourdhui=LocalDate.now();
+            LocalDate dateNaissance=d.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            long age=ChronoUnit.YEARS.between(dateNaissance, dateAujourdhui);
+            if(age<15 || age>35){
                   ligne[3]=ligne[3]+"("+I18n.texte("message.age")+")";
             }
         } catch (ParseException ex) {

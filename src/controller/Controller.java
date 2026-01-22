@@ -68,11 +68,10 @@ public class Controller{
         view.ajouterDocumentListener();
         model.chargerLangue(view);
         FlatLightLaf.setup();
-        UIManager.put("Button.arc", 20);
+        UIManager.put("Button.arc", 990);
         UIManager.put("Component.arc", 20);
         UIManager.put("TextComponent.arc", 990);
         UIManager.put("Panel.background", new Color(245,247,250));
-        view.getEspaceImage().putClientProperty(FlatClientProperties.STYLE,"arc:25;");
         view.textIndication();
         view.getEffectif().setText("0/"+liste.size());
         view.getDocument().putClientProperty(FlatClientProperties.COMPONENT_ROUND_RECT, 20);

@@ -328,12 +328,12 @@ public class View extends javax.swing.JFrame {
         btnSupprimer.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSupprimer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/outils/ressource/trash (1).png"))); // NOI18N
         btnSupprimer.setToolTipText("Supprimer");
-        espacePhoto.add(btnSupprimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 50, -1));
+        espacePhoto.add(btnSupprimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 50, -1));
 
         btnChanger.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnChanger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/outils/ressource/image-up.png"))); // NOI18N
         btnChanger.setToolTipText("Changer");
-        espacePhoto.add(btnChanger, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 50, -1));
+        espacePhoto.add(btnChanger, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 50, -1));
 
         espaceImage.add(espacePhoto);
 
@@ -512,10 +512,25 @@ public class View extends javax.swing.JFrame {
 
         jPanel11.setBackground(new java.awt.Color(63, 187, 192));
         jPanel11.setPreferredSize(new java.awt.Dimension(260, 191));
-        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         codeQr.setLayout(new java.awt.BorderLayout());
-        jPanel11.add(codeQr, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 178, 167));
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(codeQr, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                .addGap(76, 76, 76))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(codeQr, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
+        );
 
         document.add(jPanel11, java.awt.BorderLayout.LINE_END);
 
