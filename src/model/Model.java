@@ -97,8 +97,8 @@ public class Model {
             if(listeSemestre.getIndexOf(semestre+"")==-1){
                 listeSemestre.addElement(semestre+"");
             }
-            if(listeSpecialite.getIndexOf(specialite)==-1){
-                listeSpecialite.addElement(specialite);
+            if(listeSpecialite.getIndexOf(specialite.toUpperCase())==-1){
+                listeSpecialite.addElement(specialite.toUpperCase());
             }
         }
         return liste;

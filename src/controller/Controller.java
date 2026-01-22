@@ -88,7 +88,7 @@ public class Controller{
         });
         view.getListeSpecialite().addItemListener(e->{
             if(e.getStateChange()==ItemEvent.SELECTED){
-                specialite=(String)e.getItem();
+                specialite=((String)e.getItem()).toUpperCase();
                 filtrer();
             }
             
@@ -194,7 +194,7 @@ public class Controller{
             liste.addElement(stagiaire);
             model.ajouterStagiaire(stagiaire);
             if(photo!=null)model.enregistrerImage(photo,stagiaire.getMatricule());
-            if(listeSpecialite.getIndexOf(stagiaire.getSpecialite())==-1)listeSpecialite.addElement(stagiaire.getSpecialite());
+            if(listeSpecialite.getIndexOf(stagiaire.getSpecialite().toUpperCase())==-1)listeSpecialite.addElement(stagiaire.getSpecialite().toUpperCase());
             if(listeSemestre.getIndexOf(stagiaire.getSemestre()+"")==-1)listeSemestre.addElement(stagiaire.getSemestre()+"");
             view.getEffectif().setText("0/"+liste.size());
         }
@@ -212,7 +212,7 @@ public class Controller{
             int indexNouveau=matriculeValide(stagiaire.getMatricule());
             if(indexNouveau==indexAncien || (indexNouveau==-1 && indexAncien!=-1)){
                 liste.getElementAt(indexAncien).mettreAJour(stagiaire);
-                if(listeSpecialite.getIndexOf(stagiaire.getSpecialite())==-1)listeSpecialite.addElement(stagiaire.getSpecialite());
+                if(listeSpecialite.getIndexOf(stagiaire.getSpecialite().toUpperCase())==-1)listeSpecialite.addElement(stagiaire.getSpecialite().toUpperCase());
                 if(listeSemestre.getIndexOf(stagiaire.getSemestre()+"")==-1)listeSemestre.addElement(stagiaire.getSemestre()+"");
                 view.getListeStagiaire().clearSelection();
                 model.supprimerImage(ancienMatricule);
@@ -335,6 +335,7 @@ public class Controller{
             File fichier=ouvrirFichier.getSelectedFile();
             if(fichier!=null){
                 model.importerExcel(liste, fichier,view);
+                view.getEffectif().setText("0/"+liste.size());
                 message(I18n.texte("message.add"),"Excelُ");
             }
         });
